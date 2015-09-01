@@ -1,22 +1,22 @@
-from flask import Flask
+from flask import Flask, jsonify
+from werkzeug.exceptions import HTTPException, default_exceptions
 
 
 app = Flask(__name__)
 
 
-@app.route('/test')
+@app.route('/hello')
 def hello():
     """Return a friendly HTTP greeting."""
     return 'Hello World!'
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    """Return a custom 404 error."""
-    return 'Sorry, Nothing at this URL.', 404
+def make_json_error(ex):
+    response = jsonify(message=str(ex))
+    response.status_code = (ex.code if isinstance(ex, HTTPException) else 500)
+    return response
 
 
-@app.errorhandler(500)
-def application_error(e):
-    """Return a custom 500 error."""
-    return 'Sorry, unexpected error: {}'.format(e), 500
+def make_json_app():
+    for code in default_exceptions.iterkeys():
+        app.error_handler_spec[None][code] = make_json_error
