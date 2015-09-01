@@ -1,1 +1,1 @@
-Install third party packages `using pip install -r lib <package>`
+Install third party packages using `pip install -t lib <package>`
