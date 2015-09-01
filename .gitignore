@@ -1,8 +1,8 @@
+# Frontend dependencies
+bower_components
+
 # Virtual environment
 venv
-
-lib/*
-!lib/README.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -12,6 +12,8 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+lib/*
+!lib/README.md
 .Python
 env/
 build/

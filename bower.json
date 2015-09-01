@@ -1,0 +1,11 @@
+{
+  "name": "food-tinder",
+  "version": "0.0.0",
+  "homepage": "https://github.com/fawind/food-tinder",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "ng-lodash": "~0.2.3",
+    "materialize": "~0.97.0"
+  }
+}
