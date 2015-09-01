@@ -1,0 +1,1 @@
+Install third party packages using `pip install -t lib <package>`
