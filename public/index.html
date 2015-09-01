@@ -1,11 +1,28 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Food-Tinder</title>
+  <meta charset="utf-8">
+
+  <title>Epic Subway</title>
+
+  <!-- Components -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <link href="bower_components/materialize/dist/css/materialize.css" rel="stylesheet">
+  <script src="bower_components/materialize/dist/js/materialize.js"></script>
+
+  <!-- Angular -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/controllers/mainController.js"></script>
+
+  <!-- Styles -->
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+
 </head>
 
-<body>
-  Hello World!
+<body ng-app="food-tinder" ng-controller="MainController">
+  {{test}}
 </body>
-
 </html>
