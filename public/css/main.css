@@ -1,0 +1,13 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+  color: #ee6e73;
+  background-color: #fff;
+}
+
+nav .brand-logo {
+  color: #ee6e73;
+}
