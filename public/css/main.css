@@ -12,3 +12,21 @@ nav {
 nav .brand-logo {
   color: #ee6e73;
 }
+
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid #ee6e73;
+ box-shadow: 0 1px 0 0 #ee6e73;
+}
+
+.address {
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+  color: #BDBDBD;
+  width: 90%;
+}
+
+.address i {
+  font-size: 14px;
+  padding-right: 1%;
+}

@@ -11,7 +11,6 @@ angular.module('food-tinder')
       var index = 1;
 
       $scope.$on('stack-init', function(event, data) {
-        console.log('Stack created!');
         $scope.stack = data;
       });
 

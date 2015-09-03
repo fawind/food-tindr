@@ -1,0 +1,8 @@
+.pac-container {
+  z-index: 1005 !important;
+}
+
+.pac-container:after {
+    background-image: none !important;
+    height: 0px;
+}
