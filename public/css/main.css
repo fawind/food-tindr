@@ -6,6 +6,7 @@ html, body {
 nav {
   color: #ee6e73;
   background-color: #fff;
+  margin-bottom: 5%;
 }
 
 nav .brand-logo {

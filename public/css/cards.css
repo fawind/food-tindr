@@ -24,7 +24,7 @@
   height: 100%;
 }
 
-.cards .row {
-  padding-bottom: 10%;
+.cards .filler {
+  visibility: hidden;
 }
 

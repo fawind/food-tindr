@@ -3,14 +3,18 @@
     <ul class="stack" swing-stack>
       <li
         swing-card
-        swing-on-throwout="throwout(eventName, eventObject, $index)"
         swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
         swing-on-throwoutright="throwoutright(eventName, eventObject)"
         ng-repeat="card in cards" ng-class="card.name">
         <div class="card card-panel center">
+          <img class="responsive-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
           {{card.symbol}}
         </div>
       </li>
+      <div class="card card-panel center filler">
+        <img class="responsive-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
+        {{cards[0].symbol}}
+      </div>
     </ul>
   </div>
 </div>
