@@ -5,3 +5,26 @@
 .cards .btn-floating .dismiss{
   color: #ee6e73;
 }
+
+.cards li {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cards .rel {
+  position:relative;
+}
+
+.cards li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+}
+
+.cards .row {
+  padding-bottom: 10%;
+}
+

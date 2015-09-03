@@ -1,8 +1,17 @@
 <div class="row">
-  <div class="col s6 offset-s3">
-    <div class="card card-panel center">
-      Card
-    </div>
+  <div class="col s6 offset-s3 rel">
+    <ul class="stack" swing-stack>
+      <li
+        swing-card
+        swing-on-throwout="throwout(eventName, eventObject, $index)"
+        swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
+        swing-on-throwoutright="throwoutright(eventName, eventObject)"
+        ng-repeat="card in cards" ng-class="card.name">
+        <div class="card card-panel center">
+          {{card.symbol}}
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 
