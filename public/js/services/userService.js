@@ -1,8 +1,18 @@
 angular.module('food-tinder')
-  .factory('UserService', ['$cookies', function($cookies) {
+  .factory('UserService', ['$cookies', 'BroadcastService',
+    function($cookies, broadcastService) {
 
     var userId;
     var location;
+    var settings = {
+      food: true,
+      radius: 2000,
+      transportation: {
+        walk: true,
+        car: false,
+        public_transport: false
+      }
+    };
 
     function _generateUUID(){
       var d = new Date().getTime();
@@ -35,10 +45,16 @@ angular.module('food-tinder')
     function setLocation(newLocation) {
       location = newLocation;
       $cookies.putObject('location', location);
+      console.log('Broadcast...');
+      broadcastService.locationSet.broadcast();
     }
 
     function getUserId() {
       return userId;
+    }
+
+    function getSettings() {
+      return settings;
     }
 
     _loadSettings();
@@ -46,6 +62,7 @@ angular.module('food-tinder')
     return {
       getLocation: getLocation,
       setLocation: setLocation,
-      getUserId: getUserId
+      getUserId: getUserId,
+      getSettings: getSettings
     };
   }]);

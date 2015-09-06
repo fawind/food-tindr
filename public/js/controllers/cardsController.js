@@ -1,6 +1,6 @@
 angular.module('food-tinder')
-  .controller('CardsController', ['$scope', '$timeout', 'lodash', 'RequestService',
-    function ($scope, $timeout, _, requestService) {
+  .controller('CardsController', ['$scope', '$timeout', 'lodash', 'RequestService', 'BroadcastService',
+    function ($scope, $timeout, _, requestService, broadcastService) {
       $scope.cards = [
           {name: 'clubs', symbol: '♣'},
           {name: 'diamonds', symbol: '♦'},
@@ -36,12 +36,23 @@ angular.module('food-tinder')
 
       function swipe(dX, dY) {
         var cards = $scope.stack.cards;
-        if (index === cards.length + 1) {
+        if (index === cards.length + 1)
           return;
-        }
 
         cards[cards.length - index].throwOut(dX, dY);
         index++;
       }
+
+      function waitForLocation() {
+        broadcastService.locationSet.listen(function() {
+          console.log('==> location Set!');
+          requestService.getLocations()
+            .success(function(results) {
+              console.log('results', results);
+            });
+        });
+      }
+
+      waitForLocation();
 
   }]);
