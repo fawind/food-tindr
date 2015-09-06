@@ -2,7 +2,7 @@
   <div class="modal-content">
     <h4>Enter your location:</h4>
     <div class="input-field col s12">
-      <input id="location" type="text" placeholder="Enter your location" ng-model="$parent.chosenPlace" googleplace>
+      <input id="location" type="text" onClick="this.select();" ng-model="$parent.chosenPlace" googleplace>
     </div>
   </div>
   <div class="modal-footer">

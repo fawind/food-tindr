@@ -1,3 +1,9 @@
 (function() {
-  var app = angular.module('food-tinder', ['gajus.swing', 'ngLodash']);
+  var app = angular.module('food-tinder',
+    [
+      'gajus.swing',
+      'ngLodash',
+      'ngCookies'
+    ]
+  );
 })();

@@ -7,6 +7,7 @@
     "angular": "~1.4.5",
     "ng-lodash": "~0.2.3",
     "materialize": "~0.97.0",
-    "angular-swing": "https://github.com/fawind/angular-swing.git"
+    "angular-swing": "https://github.com/fawind/angular-swing.git",
+    "angular-cookies": "~1.4.5"
   }
 }
