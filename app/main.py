@@ -29,3 +29,9 @@ def make_json_error(ex):
 def get_restaurants():
     places = find_restaurants(request.get_json(force=True))
     return jsonify(places)
+
+
+@app.route('/api/drinks', methods=['POST'])
+def get_drinks():
+    places = find_drinks(request.get_json(force=True))
+    return jsonify(places)

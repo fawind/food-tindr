@@ -1,7 +1,12 @@
+import logging
+
 from flask.json import JSONEncoder
 from googleplaces import GooglePlaces, types
 
 from api_key import API_KEY
+
+
+logger = logging.getLogger()
 
 
 class NonASCIIJSONEncoder(JSONEncoder):
@@ -11,7 +16,9 @@ class NonASCIIJSONEncoder(JSONEncoder):
 
 
 def _get_photo(place):
-    pass
+    # logger.warning(place.photos[0].html_attributions)
+    # logger.warning(place.photos[0].photo_reference)
+    return ''
 
 
 def _is_open(place_details):
@@ -35,17 +42,27 @@ def _filter_place_data(place):
     details = place.details
     additionals = []
     data.update({key: details[key] for key in additionals if key in details})
-
     data['is_open'] = _is_open(details)
+    data['photo'] = _get_photo(place)
+
     return data
 
 
-def find_restaurants(request):
+def _find_places(request, place_type):
     g_places = GooglePlaces(API_KEY)
     request_fields = ['lat_lng', 'radius']
     api_req = {k: request[k] for k in request_fields}
-    query_result = g_places.nearby_search(types=[types.TYPE_FOOD], **api_req)
+    query_result = g_places.nearby_search(types=place_type, **api_req)
 
     places = map(_filter_place_data, query_result.places)
 
     return {'places': places}
+
+
+def find_restaurants(request):
+    return _find_places(request, [types.TYPE_FOOD, types.TYPE_MEAL_TAKEAWAY,
+                                  types.TYPE_RESTAURANT])
+
+
+def find_drinks(request):
+    return _find_places(request, [types.BAR, types.CAFE])
