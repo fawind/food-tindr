@@ -17,7 +17,7 @@ def _get_photo(place):
 def _is_open(place_details):
     try:
         return place_details['opening_hours']['open_now']
-    except KeyError:
+    except (KeyError, AttributeError):
         return False
 
 
@@ -42,7 +42,10 @@ def _filter_place_data(place):
 
 def find_restaurants(request):
     g_places = GooglePlaces(API_KEY)
-    query_result = g_places.nearby_search(types=[types.TYPE_FOOD], **request)
+    request_fields = ['lat_lng', 'radius']
+    api_req = {k: request[k] for k in request_fields}
+    query_result = g_places.nearby_search(types=[types.TYPE_FOOD], **api_req)
+
     places = map(_filter_place_data, query_result.places)
 
     return {'places': places}
