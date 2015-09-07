@@ -1,7 +1,7 @@
 angular.module('food-tinder')
   .factory('MapsService', ['$http', function($http) {
 
-    var apiKey = 'AIzaSyDdQUO8LKrQMSuKkRw57fxaQhYGH1OrZ0Y';
+    var apiKey = 'AIzaSyAI-Lcxi-u3YBnDTL7JRVZpmj2Eitp-9WU';
 
     var addressToLatLngUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address={{address}}&key=' + apiKey;
     var LatLngToAddressUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng={{lat}},{{lng}}&key=' + apiKey;

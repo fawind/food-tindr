@@ -5,6 +5,10 @@ angular.module('food-tinder')
       $scope.drink = '';
       $scope.food = 'active';
 
+      $scope.toggleSettings = function() {
+        $('#modalSettings').openModal();
+      };
+
       $scope.toggleDrink = function() {
         $scope.food = '';
         $scope.drink = 'active';
