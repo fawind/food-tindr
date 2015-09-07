@@ -17,7 +17,7 @@ angular.module('food-tinder')
 
       var body = {
         user_id: userId,
-        location: {
+        lat_lng: {
           lat: location.lat,
           lng: location.lng
         },

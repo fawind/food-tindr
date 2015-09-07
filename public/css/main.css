@@ -30,3 +30,19 @@ nav .brand-logo {
   font-size: 14px;
   padding-right: 1%;
 }
+
+.food-switch {
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+}
+
+.food-switch .btn {
+  background-color: white;
+  color: #E0E0E0;
+}
+
+.food-switch .active {
+  background-color: white;
+  color: #ee6e73;
+}
