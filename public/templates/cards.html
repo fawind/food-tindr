@@ -7,14 +7,21 @@
         swing-on-throwoutright="throwoutright(eventName, eventObject)"
         ng-repeat="card in cards" ng-class="card.name">
         <div class="card card-panel center">
-          <img class="responsive-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
-          {{card.symbol}}
+          <img class="responsive-img header-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
+          <h4><a href="{{card.website}}" target="_blank">
+            {{card.name}}
+          </a></h4>
+          {{card.formatted_address}}
         </div>
       </li>
+
       <div class="card card-panel center filler">
-        <img class="responsive-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
-        {{cards[0].symbol}}
+        <h4>placeolder_name</h4>
+        <h4>placeolder_name</h4>
+        <img class="responsive-img header-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
+        address
       </div>
+
     </ul>
   </div>
 </div>
@@ -27,5 +34,17 @@
     <a class="btn-floating btn-large waves-effect waves-light white" ng-click="favourite()">
       <i class="material-icons favourite">favorite_border</i>
     </a>
+  </div>
+</div>
+
+<div ng-show="loading" class="preloader-wrapper big active">
+  <div class="spinner-layer spinner-red-only">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
   </div>
 </div>

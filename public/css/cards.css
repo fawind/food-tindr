@@ -24,7 +24,25 @@
   height: 100%;
 }
 
+.cards .card {
+  height: 25em;
+}
+
+.cards .header-img {
+  height: 12em;
+}
+
 .cards .filler {
   visibility: hidden;
+}
+
+.cards a {
+  color: black;
+}
+
+.cards .preloader-wrapper {
+  position: absolute;
+  top: 45%;
+  left: 45%;
 }
 

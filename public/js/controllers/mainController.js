@@ -1,5 +1,20 @@
 angular.module('food-tinder')
-  .controller('MainController', ['$scope', '$cookies', 'lodash',
-    function ($scope, $cookies, _) {
+  .controller('MainController', ['$scope', 'UserService',
+    function ($scope, userService) {
+
+      $scope.drink = '';
+      $scope.food = 'active';
+
+      $scope.toggleDrink = function() {
+        $scope.food = '';
+        $scope.drink = 'active';
+        userService.setFood(false);
+      };
+
+      $scope.toggleFood = function() {
+        $scope.drink = '';
+        $scope.food = 'active';
+        userService.setFood(true);
+      };
 
   }]);

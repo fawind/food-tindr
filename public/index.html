@@ -43,8 +43,8 @@
   </div>
 
   <div class="food-switch">
-    <a class="waves-effect waves-light btn inactive"><i class="material-icons">local_bar</i></a>
-    <a class="waves-effect waves-light btn active"><i class="material-icons">local_dining</i></a>
+    <a class="waves-effect waves-effect waves-orange btn" ng-class="drink" ng-click="toggleDrink()"><i class="material-icons">local_bar</i></a>
+    <a class="waves-effect waves-effect waves-orange btn" ng-class="food" ng-click="toggleFood()"><i class="material-icons">local_dining</i></a>
   </div>
 
   <div ng-controller="LocationController">

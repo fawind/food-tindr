@@ -1,12 +1,7 @@
 angular.module('food-tinder')
   .controller('CardsController', ['$scope', '$timeout', 'lodash', 'RequestService', 'BroadcastService',
     function ($scope, $timeout, _, requestService, broadcastService) {
-      $scope.cards = [
-          {name: 'clubs', symbol: '♣'},
-          {name: 'diamonds', symbol: '♦'},
-          {name: 'hearts', symbol: '♥'},
-          {name: 'spades', symbol: '♠'}
-      ];
+      $scope.cards = [];
 
       var index = 1;
 
@@ -44,11 +39,13 @@ angular.module('food-tinder')
       }
 
       function waitForLocation() {
+        $scope.loading = true;
         broadcastService.locationSet.listen(function() {
-          console.log('==> location Set!');
           requestService.getLocations()
             .success(function(results) {
+              $scope.loading = false;
               console.log('results', results);
+              $scope.cards = results.places;
             });
         });
       }

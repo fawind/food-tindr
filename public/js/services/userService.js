@@ -45,7 +45,6 @@ angular.module('food-tinder')
     function setLocation(newLocation) {
       location = newLocation;
       $cookies.putObject('location', location);
-      console.log('Broadcast...');
       broadcastService.locationSet.broadcast();
     }
 
@@ -57,12 +56,17 @@ angular.module('food-tinder')
       return settings;
     }
 
+    function setFood(food) {
+      settings.food = food;
+    }
+
     _loadSettings();
 
     return {
       getLocation: getLocation,
       setLocation: setLocation,
       getUserId: getUserId,
-      getSettings: getSettings
+      getSettings: getSettings,
+      setFood: setFood
     };
   }]);
