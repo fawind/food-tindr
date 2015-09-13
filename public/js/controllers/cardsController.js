@@ -38,6 +38,14 @@ angular.module('food-tinder')
         index++;
       }
 
+      function rotateCards() {
+        _.each($scope.cards, function(card) {
+          var rotation = (Math.round(Math.random() * 5) + 1);
+          rotation = Math.random() < 0.5 ? -1 * rotation : rotation;
+          card.rotation = "transform: rotate(" + rotation + "deg)";
+        });
+      }
+
       function waitForLocation() {
         $scope.loading = true;
         broadcastService.locationSet.listen(function() {
@@ -46,6 +54,7 @@ angular.module('food-tinder')
               $scope.loading = false;
               console.log('results', results);
               $scope.cards = results.places;
+              rotateCards();
             });
         });
       }

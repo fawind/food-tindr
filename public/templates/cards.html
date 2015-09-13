@@ -6,7 +6,7 @@
         swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
         swing-on-throwoutright="throwoutright(eventName, eventObject)"
         ng-repeat="card in cards" ng-class="card.name">
-        <div class="card card-panel center">
+        <div class="card card-panel center" style="{{card.rotation}}">
           <img class="responsive-img header-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
           <h4><a href="{{card.website}}" target="_blank">
             {{card.name}}
