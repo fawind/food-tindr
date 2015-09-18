@@ -2,20 +2,14 @@ import logging
 
 from flask import Flask, jsonify, request
 
-from place_finders import *
+from place_finders import NonASCIIJSONEncoder, find_restaurants, find_drinks, \
+                          get_details
 
 
 app = Flask(__name__)
 app.json_encoder = NonASCIIJSONEncoder
 app.debug = True
 logger = logging.getLogger()
-
-
-
-
-@app.route('/hello')
-def hello():
-    return jsonify({'message': "Welcome to our website"})
 
 
 @app.errorhandler(500)
@@ -35,3 +29,8 @@ def get_restaurants():
 def get_drinks():
     places = find_drinks(request.get_json(force=True))
     return jsonify(places)
+
+
+@app.route('/api/place/<place_id>', methods=['GET'])
+def get_place_details(place_id):
+    return jsonify(get_details(place_id))
