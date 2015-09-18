@@ -7,7 +7,11 @@
 }
 
 .cards .card {
-  max-height: 30rem;
+  max-height: 25rem;
+}
+
+.cards .card map {
+  max-height: 15rem;
 }
 
 .cards li {
