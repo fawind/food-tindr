@@ -66,4 +66,5 @@ def find_drinks(request):
 
 
 def get_details(place_id):
+    # TODO: Filter details
     return {'details': _get_place_details(place_id, API_KEY)}

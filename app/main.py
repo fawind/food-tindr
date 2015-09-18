@@ -21,14 +21,12 @@ def make_json_error(ex):
 
 @app.route('/api/food', methods=['POST'])
 def get_restaurants():
-    places = find_restaurants(request.get_json(force=True))
-    return jsonify(places)
+    return jsonify(find_restaurants(request.get_json()))
 
 
 @app.route('/api/drinks', methods=['POST'])
 def get_drinks():
-    places = find_drinks(request.get_json(force=True))
-    return jsonify(places)
+    return jsonify(find_drinks(request.get_json()))
 
 
 @app.route('/api/place/<place_id>', methods=['GET'])
