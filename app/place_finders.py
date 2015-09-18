@@ -5,6 +5,8 @@ from googleplaces import GooglePlaces, types, _get_place_details
 
 from api_key import API_KEY
 
+__all__ = ['find_restaurants', 'find_drinks', 'get_details']
+
 
 logger = logging.getLogger()
 
@@ -15,12 +17,6 @@ class NonASCIIJSONEncoder(JSONEncoder):
         self.ensure_ascii = False
 
 
-def _get_photo(place):
-    # logger.warning(place.photos[0].html_attributions)
-    # logger.warning(place.photos[0].photo_reference)
-    return ''
-
-
 def _is_open(place_details):
     try:
         return place_details['opening_hours']['open_now']
@@ -29,21 +25,8 @@ def _is_open(place_details):
 
 
 def _filter_place_data(place):
-    data = {}
-    data['id'] = place.place_id
-    data['name'] = place.name
-    data['rating'] = place._rating
-    data['address'] = place.vicinity
-    data['geo_location'] = place.geo_location
-
-    # Retrieve additional information
-    # details = place.details
-    # additionals = []
-    # data.update({key: details[key] for key in additionals if key in details})
-    # data['is_open'] = _is_open(details)
-    # data['photo'] = _get_photo(place)
-
-    return data
+    return {'id': place.place_id, 'name': place.name, 'rating': place._rating,
+            'address': place.vicinity, 'geo_location': place.geo_location}
 
 
 def _find_places(request, place_type):
@@ -66,5 +49,10 @@ def find_drinks(request):
 
 
 def get_details(place_id):
-    # TODO: Filter details
-    return {'details': _get_place_details(place_id, API_KEY)}
+    details = _get_place_details(place_id, API_KEY)
+
+    additionals = ["formatted_phone_number", "weekday_text", "website"]
+    data = {key: details[key] for key in additionals if key in details}
+    data['is_open'] = _is_open(details)
+
+    return {'details': data}
