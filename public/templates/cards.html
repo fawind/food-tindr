@@ -7,7 +7,17 @@
         swing-on-throwoutright="throwoutright(eventName, eventObject)"
         ng-repeat="card in cards" ng-class="card.name">
         <div class="card card-panel center" style="{{card.rotation}}">
-          <img class="responsive-img header-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
+          <map zoom="16" center="{{card.destination}}" styles="{{mapStyle}}" disable-default-u-i="true">
+            <marker position="{{card.destination}}" title="card.name"></marker>
+            <directions
+              draggable="false"
+              panel="directions-panel"
+              travel-mode="WALKING"
+              origin="{{origin}}"
+              destination="{{card.destination}}"
+              >
+            </directions>
+          </map>
           <h4><a href="{{card.website}}" target="_blank">
             {{card.name}}
           </a></h4>
@@ -18,7 +28,15 @@
       <div class="card card-panel center filler">
         <h4>placeolder_name</h4>
         <h4>placeolder_name</h4>
-        <img class="responsive-img header-img" src="http://aht.seriouseats.com/images/2012/04/20120427-bk-japan-ringo-burger-product-shot.jpg">
+        <map zoom="14" center="37.7699298, -122.4469157">
+          <directions
+            draggable="false"
+            panel="directions-panel"
+            travel-mode=""
+            origin=""
+            destination="">
+          </directions>
+        </map>
         address
       </div>
 

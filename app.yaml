@@ -21,6 +21,12 @@ handlers:
   static_files: public/\1
   upload: public/(.*\.js)
 
+- url: /(.*\.json)
+  mime_type: application/json
+  static_files: public/\1
+  upload: public/(.*\.json)
+  expiration: "1h"
+
 # fonts
 - url: /(.*\.ttf)
   mime_type: font/truetype

@@ -1,12 +1,12 @@
 angular.module('food-tinder')
-  .controller('CardsController', ['$scope', '$timeout', 'lodash', 'RequestService', 'BroadcastService',
-    function ($scope, $timeout, _, requestService, broadcastService) {
+  .controller('CardsController', ['$scope', '$timeout', 'lodash', 'RequestService', 'BroadcastService', 'UserService', 'MapsService',
+    function ($scope, $timeout, _, requestService, broadcastService, userService, mapsService) {
       $scope.cards = [];
-
+      $scope.mapStyle = mapsService.getMapStyle();
       var index = 1;
 
-      $scope.$on('stack-init', function(event, data) {
-        $scope.stack = data;
+      $scope.$on('stack-init', function(event, newStack) {
+        $scope.stack = newStack;
       });
 
       $scope.throwoutleft = function (eventName, eventObject, $index) {
@@ -51,11 +51,25 @@ angular.module('food-tinder')
         broadcastService.locationSet.listen(function() {
           requestService.getLocations()
             .success(function(results) {
-              $scope.loading = false;
-              console.log('results', results);
-              $scope.cards = results.places;
-              rotateCards();
+              initCards(results);
             });
+        });
+      }
+
+      function initCards(results) {
+        $scope.loading = false;
+        console.log('results', results);
+        $scope.cards = results.places;
+        setDirections($scope.cards);
+        rotateCards();
+      }
+
+      function setDirections(cards) {
+        var location = userService.getLocation();
+        $scope.origin = location.lat + ', ' + location.lng;
+
+        _.each(cards, function(card) {
+          card.destination = card.geo_location.lat + ', ' + card.geo_location.lng;
         });
       }
 
