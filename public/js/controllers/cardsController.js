@@ -18,6 +18,7 @@ angular.module('food-tinder')
       $scope.throwoutright = function (eventName, eventObject, $index) {
           $timeout(function() {
             $scope.cards.splice($scope.cards.length - 1, 1);
+            console.log($scope.stack);
           }, 200);
       };
 
@@ -38,14 +39,6 @@ angular.module('food-tinder')
         index++;
       }
 
-      function rotateCards() {
-        _.each($scope.cards, function(card) {
-          var rotation = (Math.round(Math.random() * 5) + 1);
-          rotation = Math.random() < 0.5 ? -1 * rotation : rotation;
-          card.rotation = "transform: rotate(" + rotation + "deg)";
-        });
-      }
-
       function waitForLocation() {
         $scope.loading = true;
         broadcastService.locationSet.listen(function() {
@@ -61,7 +54,7 @@ angular.module('food-tinder')
         console.log('results', results);
         $scope.cards = results.places;
         setDirections($scope.cards);
-        rotateCards();
+        rotateCards($scope.cards);
       }
 
       function setDirections(cards) {
@@ -70,6 +63,14 @@ angular.module('food-tinder')
 
         _.each(cards, function(card) {
           card.destination = card.geo_location.lat + ', ' + card.geo_location.lng;
+        });
+      }
+
+      function rotateCards(cards) {
+        _.each(cards, function(card, index) {
+          var rotation = (Math.round(Math.random() * 5) + 1);
+          rotation = Math.random() < 0.5 ? -1 * rotation : rotation;
+          card.rotation = "transform: rotate(" + rotation + "deg);";
         });
       }
 

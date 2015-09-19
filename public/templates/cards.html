@@ -5,10 +5,9 @@
         swing-card
         swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
         swing-on-throwoutright="throwoutright(eventName, eventObject)"
-        ng-repeat="card in cards" ng-class="card.name">
+        ng-repeat="card in cards | limitTo:-1" ng-class="card.name">
         <div class="card card-panel center" style="{{card.rotation}}">
           <map zoom="16" center="{{card.destination}}" styles="{{mapStyle}}" disable-default-u-i="true">
-            <marker position="{{card.destination}}" title="card.name"></marker>
             <directions
               draggable="false"
               panel="directions-panel"
@@ -24,22 +23,6 @@
           {{card.formatted_address}}
         </div>
       </li>
-
-      <div class="card card-panel center filler">
-        <h4>placeolder_name</h4>
-        <h4>placeolder_name</h4>
-        <map zoom="14" center="37.7699298, -122.4469157">
-          <directions
-            draggable="false"
-            panel="directions-panel"
-            travel-mode=""
-            origin=""
-            destination="">
-          </directions>
-        </map>
-        address
-      </div>
-
     </ul>
   </div>
 </div>
