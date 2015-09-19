@@ -1,3 +1,7 @@
+.cards .row {
+  padding-bottom: 5%;
+}
+
 .cards .btn-floating .favourite{
   color: #63DF99;
 }

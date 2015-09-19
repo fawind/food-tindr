@@ -6,7 +6,7 @@
         swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
         swing-on-throwoutright="throwoutright(eventName, eventObject)"
         ng-repeat="card in cards | limitTo:-1" ng-class="card.name">
-        <div class="card card-panel center" style="{{card.rotation}}">
+        <div class="card card-panel center z-depth-2" style="{{card.rotation}}">
           <map zoom="16" center="{{card.destination}}" styles="{{mapStyle}}" disable-default-u-i="true">
             <directions
               draggable="false"
