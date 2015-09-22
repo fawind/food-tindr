@@ -9,16 +9,33 @@ nav {
   margin-bottom: 5%;
 }
 
+nav i {
+  color: #BDBDBD;
+}
+
 nav .brand-logo {
   color: #ee6e73;
 }
 
 nav .brand-logo i {
+  color: #E0E0E0;
+}
+
+nav .brand-logo .active {
   color: #ee6e73;
 }
 
 nav .material-icons {
+  margin: 0px;
   line-height: 56px;
+}
+
+nav .label {
+  padding-left: 10px;
+}
+
+nav .icon-divider {
+  color: #E0E0E0;
 }
 
 .input-field input[type=text]:focus {
@@ -37,24 +54,4 @@ nav .material-icons {
 .address i {
   font-size: 14px;
   padding-right: 1%;
-}
-
-.food-switch {
-  position: absolute;
-  bottom: 1%;
-  right: 1%;
-}
-
-.food-switch .btn {
-  background-color: white;
-  color: #E0E0E0;
-}
-
-.food-switch .active {
-  background-color: white;
-  color: #ee6e73;
-}
-
-nav i {
-  color: #BDBDBD;
 }

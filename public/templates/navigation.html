@@ -1,9 +1,19 @@
 <nav>
   <div class="nav-wrapper">
     <a href="#" class="brand-logo center" ng-click="toggleFood()">
-      <i ng-show="food" class="material-icons left">local_dining</i>
-      <i ng-hide="food" class="material-icons left">local_bar</i>
-      {{lable}}-Tinder
+      <span ng-show="food">
+        <i class="material-icons left">local_bar</i>
+        <span class="left icon-divider">/</span>
+        <i class="material-icons left active" >local_dining</i>
+      </span>
+      <span ng-hide="food">
+        <i class="material-icons left" >local_dining</i>
+        <span class="left icon-divider">/</span>
+        <i class="material-icons left active">local_bar</i>
+      </span>
+      <span class="label">
+        {{lable}}-Tinder
+      </span>
     </a>
     <ul id="nav-mobile" class="right">
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1" ng-click="toggleSettings()"><i class="material-icons">more_vert</i></a></li>

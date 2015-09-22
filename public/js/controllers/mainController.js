@@ -9,21 +9,15 @@ angular.module('food-tinder')
         $('#modalSettings').openModal();
       };
 
-      $scope.toggleDrink = function() {
-        $scope.food = '';
-        $scope.drink = 'active';
-        userService.setFood(false);
-      };
-
       $scope.toggleFood = function() {
         if ($scope.food) {
           $scope.food = false;
           $scope.lable = 'Bar';
-          userService.setFood(true);
+          userService.setFood(false);
         } else {
           $scope.food = true;
           $scope.lable = 'Food';
-          userService.setFood(false);
+          userService.setFood(true);
         }
       };
 
