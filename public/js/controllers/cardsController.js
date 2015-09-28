@@ -1,21 +1,44 @@
 angular.module('food-tinder')
-  .controller('CardsController', ['$scope', '$timeout', 'lodash', 'RequestService', 'BroadcastService', 'UserService', 'MapsService',
-    function ($scope, $timeout, _, requestService, broadcastService, userService, mapsService) {
+  .controller('CardsController', ['$scope', '$rootScope', '$timeout', 'lodash', 'chroma', 'RequestService', 'BroadcastService', 'UserService', 'MapsService',
+    function ($scope, $rootScope, $timeout, _, chroma, requestService, broadcastService, userService, mapsService) {
       $scope.cards = [];
       $scope.mapStyle = mapsService.getMapStyle();
       var index = 1;
+      var dismissScale = chroma.chroma.scale(['#ffffff', '#ee6e73']);
+      var favouriteScale = chroma.chroma.scale(['#ffffff', '#63DF99']);
 
       $scope.$on('stack-init', function(event, newStack) {
         $scope.stack = newStack;
       });
 
-      $scope.throwoutleft = function (eventName, eventObject, $index) {
+      $scope.dragmove = function(eventName, eventObject) {
+        var color = '';
+
+        if (eventObject.throwDirection === 1)
+          color = favouriteScale(eventObject.throwOutConfidence);
+        else
+          color = dismissScale(eventObject.throwOutConfidence);
+
+        $rootScope.bgColor = { background: color };
+        _.defer(function() {
+          $rootScope.$apply();
+        });
+      };
+
+      $scope.dragend = function(eventName, eventObject) {
+        $rootScope.bgColor = { background: 'white' };
+        _.defer(function() {
+          $rootScope.$apply();
+        });
+      };
+
+      $scope.throwoutleft = function(eventName, eventObject, $index) {
           $timeout(function() {
             $scope.cards.splice($scope.cards.length - 1, 1);
           }, 200);
       };
 
-      $scope.throwoutright = function (eventName, eventObject, $index) {
+      $scope.throwoutright = function(eventName, eventObject, $index) {
           $timeout(function() {
             $scope.cards.splice($scope.cards.length - 1, 1);
             console.log($scope.stack);

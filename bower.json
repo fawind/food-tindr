@@ -9,6 +9,7 @@
     "materialize": "~0.97.0",
     "angular-swing": "https://github.com/fawind/angular-swing.git",
     "angular-cookies": "~1.4.5",
-    "ngmap": "~1.13.4"
+    "ngmap": "~1.13.4",
+    "angular-chroma": "*"
   }
 }

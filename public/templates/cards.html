@@ -5,6 +5,8 @@
         swing-card
         swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
         swing-on-throwoutright="throwoutright(eventName, eventObject)"
+        swing-on-dragmove="dragmove(eventName, eventObject)"
+        swing-on-dragend="dragend(eventName, eventObject)"
         ng-repeat="card in cards | limitTo:-1" ng-class="card.name">
         <div class="card card-panel center z-depth-2" style="{{card.rotation}}">
           <map zoom="16" center="{{card.destination}}" styles="{{mapStyle}}" disable-default-u-i="true">
@@ -17,10 +19,8 @@
               >
             </directions>
           </map>
-          <h4><a href="{{card.website}}" target="_blank">
-            {{card.name}}
-          </a></h4>
-          {{card.formatted_address}}
+          <h4>{{card.name}}</h4>
+          {{card.address}}
         </div>
       </li>
     </ul>

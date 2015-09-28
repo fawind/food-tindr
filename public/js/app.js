@@ -3,6 +3,7 @@
     [
       'gajus.swing',
       'ngMap',
+      'chroma.angularChroma',
       'ngLodash',
       'ngCookies'
     ]

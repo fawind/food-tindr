@@ -19,6 +19,7 @@
   <script src="bower_components/angular-swing/dist/angular-swing.js"></script>
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+  <script src="bower_components/angular-chroma/angular-chroma.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/controllers/mainController.js"></script>
@@ -37,7 +38,7 @@
 
 </head>
 
-<body ng-app="food-tinder" ng-controller="MainController">
+<body ng-app="food-tinder" ng-controller="MainController" ng-style="bgColor">
   <div ng-include src="'templates/navigation.html'"></div>
 
   <div ng-controller="CardsController" class="container">
