@@ -60,6 +60,18 @@ angular.module('food-tinder')
       settings.food = food;
     }
 
+    function setRadius(radius) {
+      settings.radius = radius;
+    }
+
+    function setTransportation(transportation) {
+      settings.transportation.walk = false;
+      settings.transportation.car = false;
+      settings.transportation.public_transport = false;
+
+      settings.transportation[transportation] = true;
+    }
+
     _loadSettings();
 
     return {
@@ -67,6 +79,8 @@ angular.module('food-tinder')
       setLocation: setLocation,
       getUserId: getUserId,
       getSettings: getSettings,
-      setFood: setFood
+      setFood: setFood,
+      setRadius: setRadius,
+      setTransportation: setTransportation
     };
   }]);

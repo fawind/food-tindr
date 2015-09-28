@@ -12,7 +12,19 @@ angular.module('food-tinder')
       }
     };
 
+    var settingsChanged = {
+      broadcast: function() {
+        $rootScope.$broadcast('settings-changed');
+      },
+      listen: function(callback) {
+        $rootScope.$on('settings-changed', function() {
+          callback();
+        });
+      }
+    };
+
     return {
-      locationSet: locationSet
+      locationSet: locationSet,
+      settingsChanged: settingsChanged
     };
   }]);

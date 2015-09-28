@@ -5,21 +5,19 @@ angular.module('food-tinder')
     var currentRestaurants = null;
     var currentBars = null;
 
-    function getRestaurants(body) {
-      if (currentRestaurants === null)
+    function getRestaurants(body, update) {
+      if (currentRestaurants === null || update === true)
         currentRestaurants = $http.post('/api/food', body);
-
       return currentRestaurants;
     }
 
-    function getBars(body) {
-      if (currentBars === null)
+    function getBars(body, update) {
+      if (currentBars === null || update === true)
         currentBars = $http.post('/api/drinks', body);
-
       return currentBars;
     }
 
-    function getLocations() {
+    function getLocations(update) {
       var userId = userService.getUserId();
       var settings = userService.getSettings();
       var location = userService.getLocation();
@@ -35,9 +33,9 @@ angular.module('food-tinder')
       };
 
       if (settings.food)
-        return getRestaurants(body);
+        return getRestaurants(body, update);
       else
-        return getBars(body);
+        return getBars(body, update);
     }
 
     return {

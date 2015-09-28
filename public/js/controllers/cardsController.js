@@ -98,4 +98,12 @@ angular.module('food-tinder')
 
       waitForLocation();
 
+      broadcastService.settingsChanged.listen(function() {
+        $scope.loading = true;
+        requestService.getLocations(true)
+          .success(function(results) {
+            initCards(results);
+          });
+      });
+
   }]);

@@ -1,5 +1,36 @@
 <div id="modalSettings" class="modal bottom-sheet">
   <div class="modal-content">
-    Settings
+    <div class="row">
+      <div class="col s12">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header active"><i class="material-icons">my_location</i></i>Radius</div>
+            <div class="collapsible-body">
+              <p>
+                <label>Radius: {{radiusModel}}km</label>
+              </p>
+              <p class="range-field">
+                <input type="range" id="radius" min="1" max="20" ng-model="$parent.radiusModel" ng-change="updateSettings()"/>
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="collapsible-header active"><i class="material-icons">directions_walk</i></i>Transportation</div>
+            <div class="collapsible-body">
+              <p>
+                <input name="transportation" type="radio" id="walk" value="walk" ng-model="$parent.transportationModel" ng-change="updateSettings()"/>
+                <label for="walk">Walk</label>
+                <br>
+                <input name="transportation" type="radio" id="car" value="car" ng-model="$parent.transportationModel" ng-change="updateSettings()"/>
+                <label for="car">Car</label>
+                <br>
+                <input name="transportation" type="radio" id="public_transport" value="public_transport" ng-model="$parent.transportationModel" ng-change="updateSettings()"/>
+                <label for="public_transport">Public Transport</label>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
   </div>
 </div>
