@@ -73,7 +73,7 @@ angular.module('food-tinder')
             $scope.card.website = results.details.website;
             $scope.card.is_open = results.details.is_open;
             $scope.card.directionsLink = getDirectionsLink($scope.card.address);
-            $scope.card.phoneLink = $scope.card.phone.replace(' ', '');
+            $scope.card.phoneLink = getPhoneLink($scope.card.phone);
             console.log($scope.card);
           });
       }
@@ -112,7 +112,15 @@ angular.module('food-tinder')
 
       function getDirectionsLink(address) {
         var url = 'https://www.google.com/maps?saddr=My+Location&daddr=';
+        if (!address)
+          return url;
         return url + address.replace(' ', '+').replace(',', '+');
+      }
+
+      function getPhoneLink(phone) {
+        if (!phone)
+          return '';
+        return phone.replace(' ', '');
       }
 
       function rotateCards(cards) {
