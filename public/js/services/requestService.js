@@ -2,12 +2,21 @@ angular.module('food-tinder')
   .factory('RequestService', ['$http', 'UserService',
     function($http, userService) {
 
+    var currentRestaurants = null;
+    var currentBars = null;
+
     function getRestaurants(body) {
-      return $http.post('/api/food', body);
+      if (currentRestaurants === null)
+        currentRestaurants = $http.post('/api/food', body);
+
+      return currentRestaurants;
     }
 
     function getBars(body) {
-      return $http.post('/api/drinks', body);
+      if (currentBars === null)
+        currentBars = $http.post('/api/drinks', body);
+
+      return currentBars;
     }
 
     function getLocations() {

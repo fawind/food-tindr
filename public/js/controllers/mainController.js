@@ -1,6 +1,6 @@
 angular.module('food-tinder')
-  .controller('MainController', ['$scope', 'UserService',
-    function ($scope, userService) {
+  .controller('MainController', ['$scope', 'UserService', 'BroadcastService',
+    function ($scope, userService, broadcastService) {
 
       $scope.food = true;
       $scope.lable = 'Food';
@@ -19,6 +19,7 @@ angular.module('food-tinder')
           $scope.lable = 'Food';
           userService.setFood(true);
         }
+        broadcastService.locationSet.broadcast();
       };
 
   }]);

@@ -45,7 +45,7 @@ def find_restaurants(request):
 
 
 def find_drinks(request):
-    return _find_places(request, [types.BAR, types.CAFE])
+    return _find_places(request, [types.TYPE_BAR, types.TYPE_CAFE])
 
 
 def get_details(place_id):

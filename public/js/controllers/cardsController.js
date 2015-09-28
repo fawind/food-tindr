@@ -41,7 +41,6 @@ angular.module('food-tinder')
       $scope.throwoutright = function(eventName, eventObject, $index) {
           $timeout(function() {
             $scope.cards.splice($scope.cards.length - 1, 1);
-            console.log($scope.stack);
           }, 200);
       };
 
