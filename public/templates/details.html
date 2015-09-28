@@ -1,0 +1,50 @@
+<div id="modalDetails" class="modal">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12 center">
+        <h4><a href="{{card.website}}" target="_blank">{{card.name}}</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6 center">
+        <div class="card-panel">
+          <a href="{{card.website}}" target="_blank">
+            <div><i class="material-icons">language</i></div>
+            <div>Website</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col s6 center">
+        <div class="card-panel">
+          <div><i class="material-icons">schedule</i></div>
+          <div>{{card.is_open ? 'Open' : 'Closed'}} now</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6 center">
+        <div class="card-panel">
+          <a href="{{card.directionsLink}}" target="_blank">
+            <div><i class="material-icons">directions</i></div>
+            <div>{{card.address}}</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col s6 center">
+        <div class="card-panel">
+          <a href="tel://{{card.phoneLink}}" target="_blank">
+            <div><i class="material-icons">phone</i></div>
+            <div>{{card.phone}}</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a ng-show="modalOpen" ng-click="closeDetails()" class="close-modal btn-floating btn-large waves-effect waves-light white">
+  <i class="material-icons">close</i>
+</a>

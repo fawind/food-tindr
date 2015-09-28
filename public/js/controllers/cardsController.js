@@ -42,6 +42,7 @@ angular.module('food-tinder')
           $timeout(function() {
             $scope.cards.splice($scope.cards.length - 1, 1);
           }, 200);
+          showDetails($scope.cards[$scope.cards.length - 1]);
       };
 
       $scope.dismiss = function() {
@@ -60,6 +61,27 @@ angular.module('food-tinder')
         cards[cards.length - index].throwOut(dX, dY);
         index++;
       }
+
+      function showDetails(card) {
+        $scope.card = card;
+        $scope.modalOpen = true;
+        $('#modalDetails').openModal();
+
+        requestService.getPlaceDetails(card.id)
+          .success(function(results) {
+            $scope.card.phone = results.details.formatted_phone_number;
+            $scope.card.website = results.details.website;
+            $scope.card.is_open = results.details.is_open;
+            $scope.card.directionsLink = getDirectionsLink($scope.card.address);
+            $scope.card.phoneLink = $scope.card.phone.replace(' ', '');
+            console.log($scope.card);
+          });
+      }
+
+      $scope.closeDetails = function() {
+        $scope.modalOpen = false;
+        $('#modalDetails').closeModal();
+      };
 
       function waitForLocation() {
         $scope.loading = true;
@@ -86,6 +108,11 @@ angular.module('food-tinder')
         _.each(cards, function(card) {
           card.destination = card.geo_location.lat + ', ' + card.geo_location.lng;
         });
+      }
+
+      function getDirectionsLink(address) {
+        var url = 'https://www.google.com/maps?saddr=My+Location&daddr=';
+        return url + address.replace(' ', '+').replace(',', '+');
       }
 
       function rotateCards(cards) {
