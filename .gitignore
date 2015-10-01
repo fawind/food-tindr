@@ -1,5 +1,6 @@
 # Frontend dependencies
 bower_components
+node_modules
 
 # Virtual environment
 venv

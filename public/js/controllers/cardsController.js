@@ -95,7 +95,6 @@ angular.module('food-tinder')
 
       function initCards(results) {
         $scope.loading = false;
-        console.log('results', results);
         $scope.cards = results.places;
         setDirections($scope.cards);
         rotateCards($scope.cards);
