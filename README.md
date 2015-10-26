@@ -2,14 +2,20 @@
 Find restaurants and bars in your area.
 
 #### Installation
-Requires the [google app engine](https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python) and [bower](http://bower.io/#install-bower).
+Requires the [Google App Engine](https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python) and [bower](http://bower.io/#install-bower).
 
-```bash
-# Install dependencies
-bower install
-# Start the server
-dev_appserver.py .
-```
+1. Modify the `app/api_key.py.template` file and fill in your API-key.
+
+2. Install the dependencies:
+  ```bash
+  pip install -r requirements.txt -t lib
+  bower install
+  ```
+
+3. Run the server:
+  ```bash
+  dev_appserver.py .
+  ```
 
 #### Build
 To build a non dev version install the dev dependencies and run the build chain.
