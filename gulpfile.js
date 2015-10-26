@@ -32,8 +32,8 @@ gulp.task('copyBackend', function() {
     .pipe(gulpCopy('./build', {}));
 });
 
-gulp.task('copyFonts', function() {
-  gulp.src(['./public/font/**/*'])
+gulp.task('copyResources', function() {
+  gulp.src(['./public/font/**/*', './public/favicon.png'])
     .pipe(gulpCopy('./build'));
 });
 
@@ -43,4 +43,4 @@ gulp.task('clean', function() {
 });
 
 gulp.task('default', ['build']);
-gulp.task('build', ['usemin', 'views:dist', 'copyBackend', 'copyFonts']);
+gulp.task('build', ['usemin', 'views:dist', 'copyBackend', 'copyResources']);

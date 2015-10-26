@@ -27,6 +27,9 @@ angular.module('food-tinder')
             location.address = address;
 
             updateLocation(location);
+          },
+          function(error) {
+            console.error('Google API Error:', error);
           });
       }
 
@@ -46,6 +49,9 @@ angular.module('food-tinder')
             .then(function(position) {
               position.address = $scope.chosenPlace;
               updateLocation(position);
+            },
+            function(error) {
+              console.error('Google API Error:', error);
             });
       }
 

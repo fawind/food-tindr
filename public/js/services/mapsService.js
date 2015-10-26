@@ -1,28 +1,36 @@
 angular.module('food-tinder')
-  .factory('MapsService', ['$http', function($http) {
+  .factory('MapsService', ['$http', '$q', function($http, $q) {
 
-    var apiKey = 'AIzaSyAI-Lcxi-u3YBnDTL7JRVZpmj2Eitp-9WU';
-
-    var addressToLatLngUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address={{address}}&key=' + apiKey;
-    var LatLngToAddressUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng={{lat}},{{lng}}&key=' + apiKey;
+    var geocoder = new google.maps.Geocoder();
 
     function getLatLng(address) {
-      var requestUrl = addressToLatLngUrl
-        .replace('{{address}}', address.replace(' ', '+'));
-      return $http.get(requestUrl)
-        .then(function(res) {
-          return res.data.results[0].geometry.location;
+      return $q(function(resolve, reject) {
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var latlng = results[0].geometry.location;
+            resolve({ lat: latlng.lat(), lng: latlng.lng() });
+          } else {
+            reject(status);
+          }
         });
+      });
     }
 
     function getAddress(lat, lng) {
-      var requestUrl = LatLngToAddressUrl
-        .replace('{{lat}}', lat)
-        .replace('{{lng}}', lng);
-      return $http.get(requestUrl)
-        .then(function(res) {
-          return res.data.results[0].formatted_address;
+      var location = { 'location': { lat: lat, lng: lng } };
+      return $q(function(resolve, reject) {
+        geocoder.geocode(location, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            if (results[0].formatted_address) {
+              resolve(results[0].formatted_address);
+            } else {
+              reject('No address found.');
+            }
+          } else {
+            reject(status);
+          }
         });
+      });
     }
 
     function getMapStyle() {

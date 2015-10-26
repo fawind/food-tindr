@@ -74,7 +74,6 @@ angular.module('food-tinder')
             $scope.card.is_open = results.details.is_open;
             $scope.card.directionsLink = getDirectionsLink($scope.card.address);
             $scope.card.phoneLink = getPhoneLink($scope.card.phone);
-            console.log($scope.card);
           });
       }
 
