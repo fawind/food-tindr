@@ -12,6 +12,7 @@
 
 .cards .card {
   max-height: 25rem;
+  max-width: 30rem;
 }
 
 .cards .card map {
