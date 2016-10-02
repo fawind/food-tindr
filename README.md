@@ -1,6 +1,10 @@
 # food-tindr
 Find restaurants and bars in your area.
 
+<p align="center">
+  <img height="400" src="https://cloud.githubusercontent.com/assets/7422050/19022041/21c55b28-88cf-11e6-9b43-b1d23d504b8c.gif" alt="Food-Tindr"/>
+</p>
+
 #### Installation
 Requires the [Google App Engine](https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python) and [bower](http://bower.io/#install-bower).
 
